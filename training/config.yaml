@@ -1,6 +1,6 @@
-# FORTNITEBALLS baseline training configuration
+# FORTNITEBALLS training configuration
 model: yolov8n.pt
-data: dataset/dataset.yaml
+data: dataset/dataset_v2.yaml
 
 # Reproducibility
 seed: 20260919
@@ -30,7 +30,7 @@ flipud: 0.0
 
 # Outputs
 project: reports/training
-name: yolov8n_baseline
+name: yolov8n_v2
 save: true
 save_period: 5
 plots: true
