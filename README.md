@@ -33,8 +33,9 @@ python scripts/predict.py --source path/to/video.mp4 --save
 
 ## Подготовка датасета
 
-Исходный набор Hard Hat Workers занимает около 1.3 ГБ. Скрипт скачивает архив
-с Kaggle, проверяет SHA-256 и безопасно распаковывает его:
+Исходный набор Hard Hat Workers занимает около 1.3 ГБ. Скрипт использует
+официальный клиент KaggleHub, загружает зафиксированную версию 1 и проверяет
+количество изображений и аннотаций:
 
 ```bash
 python scripts/download_dataset.py
@@ -50,7 +51,9 @@ dataset/processed/helmet_yolo_v1/
 ```
 
 Обе директории исключены из Git. Подробнее о происхождении, лицензии и
-разметке: [dataset/README.md](dataset/README.md).
+разметке: [dataset/README.md](dataset/README.md). Во время подготовки
+`prepare_dataset.py` дополнительно проверяет структуру и CRC каждого PNG и
+записывает SHA-256 изображений в манифест.
 
 ## Обучение
 
@@ -117,4 +120,3 @@ git push -u origin HEAD
 
 Основной план и актуальный статус проекта находятся в
 [PIPELINE.md](PIPELINE.md).
-

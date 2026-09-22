@@ -30,8 +30,14 @@
 Из корня проекта:
 
 ```bash
+python3 scripts/download_dataset.py
 python3 scripts/prepare_dataset.py
 ```
+
+Загрузка выполняется официальным клиентом KaggleHub для зафиксированной версии
+`andrewmvd/hard-hat-detection/versions/1`. Для публичного набора авторизация
+обычно не требуется; если Kaggle запросит принятие условий или вход, следует
+выполнить официальную настройку учётных данных KaggleHub.
 
 Скрипт:
 
