@@ -1,0 +1,54 @@
+# Файлы пользователя, не относящиеся к репозиторию.
+/Tech Spec.pdf
+/ПРОЕКТЫ.txt
+/Семинар1.pptx
+
+# Python и локальные окружения.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.conda/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Секреты и локальная конфигурация.
+.env
+.env.*
+!.env.example
+/docs/ssh_known_hosts
+
+# Системные файлы, IDE и кэши инструментов.
+.DS_Store
+.idea/
+.vscode/
+.ultralytics/
+.matplotlib/
+.cache/
+
+# Исходный и подготовленный датасет хранятся локально.
+/dataset/source/
+/dataset/processed/
+/dataset/custom/raw/
+/dataset/custom/frames/
+
+# Веса и экспортированные модели не хранятся в обычном Git.
+*.pt
+*.pth
+*.onnx
+*.rknn
+/reports/training/**/weights/
+
+# Локальные результаты запусков и журналы.
+runs/
+*.log
+
+# Исходные видеозаписи могут быть слишком большими для Git.
+*.mp4
+*.mov
+*.avi
+*.mkv

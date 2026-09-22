@@ -1,0 +1,40 @@
+# FORTNITEBALLS baseline training configuration
+model: yolov8n.pt
+data: dataset/dataset.yaml
+
+# Reproducibility
+seed: 20260919
+deterministic: true
+
+# Training
+epochs: 50
+patience: 10
+imgsz: 640
+batch: 16
+device: mps
+workers: 4
+optimizer: AdamW
+lr0: 0.001
+lrf: 0.01
+cos_lr: true
+weight_decay: 0.0005
+warmup_epochs: 3.0
+amp: false
+
+# Augmentation
+mosaic: 1.0
+close_mosaic: 10
+mixup: 0.0
+fliplr: 0.5
+flipud: 0.0
+
+# Outputs
+project: reports/training
+name: yolov8n_baseline
+save: true
+save_period: 5
+plots: true
+val: true
+verbose: true
+exist_ok: false
+

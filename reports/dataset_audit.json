@@ -1,0 +1,64 @@
+{
+  "source": {
+    "root": "dataset/source/hard-hat-detection-v1",
+    "xml_files": 5000,
+    "license": "CC0-1.0 / Public Domain (per Kaggle source page)",
+    "url": "https://www.kaggle.com/datasets/andrewmvd/hard-hat-detection"
+  },
+  "mapping": {
+    "helmet": "helmet",
+    "head": "no_helmet",
+    "person": null
+  },
+  "seed": 20260919,
+  "split_ratios": {
+    "train": 0.8,
+    "val": 0.1,
+    "test": 0.1
+  },
+  "accepted_images": 5000,
+  "images_by_split": {
+    "train": 4000,
+    "val": 500,
+    "test": 500
+  },
+  "objects_by_split": {
+    "train": {
+      "helmet": 14958,
+      "no_helmet": 4655
+    },
+    "val": {
+      "helmet": 2019,
+      "no_helmet": 596
+    },
+    "test": {
+      "helmet": 1989,
+      "no_helmet": 534
+    }
+  },
+  "strata_by_split": {
+    "train": {
+      "helmet": 3264,
+      "helmet+no_helmet": 401,
+      "no_helmet": 335
+    },
+    "val": {
+      "helmet": 408,
+      "helmet+no_helmet": 50,
+      "no_helmet": 42
+    },
+    "test": {
+      "helmet": 408,
+      "helmet+no_helmet": 50,
+      "no_helmet": 42
+    }
+  },
+  "duplicates_removed": 0,
+  "duplicates": [],
+  "issues_by_kind": {},
+  "issues": [],
+  "clipped_boxes": 0,
+  "link_modes": {
+    "hardlink": 5000
+  }
+}

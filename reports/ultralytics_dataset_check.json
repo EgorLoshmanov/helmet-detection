@@ -1,0 +1,51 @@
+{
+  "python": "3.10.21",
+  "ultralytics": "8.4.155",
+  "torch": "2.14.0",
+  "data": "dataset/dataset.yaml",
+  "names": {
+    "0": "helmet",
+    "1": "no_helmet"
+  },
+  "splits": {
+    "train": {
+      "images": 4000,
+      "objects": {
+        "helmet": 14958,
+        "no_helmet": 4655
+      },
+      "sample_image_shape": [
+        3,
+        640,
+        640
+      ],
+      "sample_boxes": 13
+    },
+    "val": {
+      "images": 500,
+      "objects": {
+        "helmet": 2019,
+        "no_helmet": 596
+      },
+      "sample_image_shape": [
+        3,
+        640,
+        640
+      ],
+      "sample_boxes": 9
+    },
+    "test": {
+      "images": 500,
+      "objects": {
+        "helmet": 1989,
+        "no_helmet": 534
+      },
+      "sample_image_shape": [
+        3,
+        640,
+        640
+      ],
+      "sample_boxes": 3
+    }
+  }
+}
