@@ -1,0 +1,173 @@
+# FORTNITEBALLS dataset assembly, version 2.
+#
+# Every source declares its own class_map. A class name that a source actually
+# contains but does not declare aborts the build when on_unmapped is "error".
+# This is deliberate: the same name means different things in different sources.
+# In hard-hat-v1 "person" is a whole-body box that must be ignored, while in
+# shwd "person" is a bare head that must become no_helmet. A single global
+# mapping cannot express both, and getting it wrong is silent.
+#
+# A class_map value of null means "this name exists and is intentionally
+# ignored". An image whose only objects were ignored is dropped, because
+# ignoring them would leave real objects unlabelled and teach the model that
+# heads are background.
+
+version: 2
+seed: 20260919
+output_root: dataset/processed/helmet_yolo_v2
+dataset_yaml: dataset/dataset_v2.yaml
+reports_prefix: dataset_v2
+
+split:
+  train: 0.8
+  val: 0.1
+  test: 0.1
+
+target_classes:
+  0: helmet
+  1: no_helmet
+
+dedup:
+  exact: true
+  perceptual: true
+  hash_size: 8
+  max_distance: 4
+
+# Core sources are always taken in full. Filler sources are subsampled until
+# every class reaches the share given by weights, so a large one-sided source
+# cannot invert the balance it was added to fix.
+balance:
+  weights:
+    helmet: 1.0
+    no_helmet: 1.0
+  negatives_max_fraction: 0.10
+
+sources:
+  - name: hard-hat-v1
+    enabled: true
+    role: core
+    priority: 10
+    format: voc
+    images: dataset/source/hard-hat-detection-v1/images
+    annotations: dataset/source/hard-hat-detection-v1/annotations
+    image_suffixes: [".png"]
+    keep_negatives: true
+    on_unmapped: error
+    class_map:
+      helmet: helmet
+      head: no_helmet
+      person: null
+    license: "CC0-1.0 / Public Domain (per Kaggle source page)"
+    url: https://www.kaggle.com/datasets/andrewmvd/hard-hat-detection
+
+  # Re-annotation of the same 5000 images as hard-hat-v1, with the missing
+  # labels completed. Higher priority than hard-hat-v1, so perceptual dedup
+  # keeps the SHEL5K copy and drops the v1 one: enabling this source migrates
+  # the labels without touching the images.
+  #
+  # Paths and class names below were read out of the downloaded archive
+  # (Mendeley version 4), not guessed from the paper. The images are byte for
+  # byte the same PNG files as hard-hat-v1, so exact sha256 dedup alone is
+  # enough to retire the v1 copies in favour of these fuller labels.
+  #
+  # No prefix on purpose: the output keeps the v1 file names, so labels of the
+  # two revisions can be diffed per image. Provenance stays in the manifest.
+  #
+  # Mapping note: only one of helmet and head_with_helmet may become class 0,
+  # since they cover the same object. Measured against the v1 boxes on the same
+  # images, SHEL5K's own "helmet" is NOT the v1 convention - it is a tight box
+  # on the shell, half the area, matching v1 for only 46% of boxes at IoU 0.5.
+  # "head_with_helmet" is the class that carries the v1 geometry: 87% of the
+  # area and 75% matched. So mapping head_with_helmet to class 0 is both the
+  # baseline-compatible choice and the consistent one, because class 1 (head)
+  # is a head box too. The current mapping below is the other one and is kept
+  # only until the team decides to rebuild. See dataset/README.md.
+  - name: shel5k
+    enabled: true
+    role: core
+    priority: 20
+    format: voc
+    images: "dataset/source/shel5k/9rcv8mm682-4/Safety Helmet Wearing Dataset/Images"
+    annotations: "dataset/source/shel5k/9rcv8mm682-4/Safety Helmet Wearing Dataset/Annotations"
+    image_suffixes: [".png"]
+    keep_negatives: true
+    on_unmapped: error
+    class_map:
+      helmet: helmet
+      head: no_helmet
+      head_with_helmet: null
+      person_with_helmet: null
+      person_no_helmet: null
+      face: null
+      # Eight stray boxes, not part of the documented six classes.
+      person: null
+    license: "CC BY 4.0"
+    url: https://data.mendeley.com/datasets/9rcv8mm682
+    citation: "Otgonbold et al., Sensors 22(6):2315, 2022. doi:10.3390/s22062315"
+
+  # Bare-head booster. "person" here is a head without a helmet, the opposite
+  # of hard-hat-v1. Kept as filler because its 111514 negatives against 9044
+  # positives would invert the class balance if taken in full, and because its
+  # two classes live in disjoint image pools (about 58% of it is SCUT-HEAD,
+  # which contains no helmets at all), so it rewards learning scene context
+  # instead of head appearance.
+  - name: shwd
+    enabled: true
+    role: filler
+    priority: 5
+    format: voc
+    images: dataset/source/shwd/VOC2028/JPEGImages
+    annotations: dataset/source/shwd/VOC2028/Annotations
+    image_suffixes: [".jpg", ".jpeg"]
+    prefix: "shwd_"
+    keep_negatives: false
+    on_unmapped: error
+    max_images: 1200
+    class_map:
+      hat: helmet
+      person: no_helmet
+      # Three stray boxes in the published archive. The authors document only
+      # hat and person, so this one is found by the on_unmapped guard, not by
+      # reading the README.
+      dog: null
+    license: "repository MIT; negatives derive from SCUT-HEAD, academic research use only"
+    url: https://github.com/njvisionpower/Safety-Helmet-Wearing-Dataset
+    citation: "Peng et al., arXiv:1803.09256, 2018 (SCUT-HEAD)"
+
+  # Frames recorded on the camera that will run on the board. group_by keeps
+  # every frame of one recording inside a single split.
+  - name: firefly-camera
+    enabled: false
+    role: core
+    priority: 30
+    format: yolo
+    images: dataset/custom/frames/images
+    labels: dataset/custom/frames/labels
+    image_suffixes: [".jpg", ".jpeg", ".png"]
+    class_names: ["helmet", "no_helmet"]
+    group_by: "^(.*)_frame_[0-9]+$"
+    keep_negatives: true
+    on_unmapped: error
+    class_map:
+      helmet: helmet
+      no_helmet: no_helmet
+    license: "recorded by the team"
+    url: ""
+
+# Reviewed and not used. Kept here so the decision is recorded next to the
+# sources that were accepted.
+rejected:
+  - name: iitu-safety-helmet-v1.0
+    url: https://huggingface.co/datasets/ersace/IITU_Safety-Helmet_Dataset_v1.0
+    reason: >
+      Classes are helmet colours only (blue, green, red, white, yellow). There is
+      no bare-head class, so unhelmeted heads stay unlabelled and train as
+      background, which is the failure this dataset revision exists to fix. The
+      1664 images are frames from about 7 drone videos at 3-15 m in 4K, the
+      opposite domain from a face-level 800x600 camera. Access is gated.
+  - name: safety-helmet-and-reflective-jacket
+    url: https://www.kaggle.com/datasets/niravnaik/safety-helmet-and-reflective-jacket
+    reason: >
+      Only safety_helmet and reflective_jacket are annotated. Bare heads are
+      present in the images but unlabelled, so the same background poisoning
+      applies. The jacket class is out of scope.
