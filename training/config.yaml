@@ -11,7 +11,7 @@ epochs: 50
 patience: 10
 imgsz: 640
 batch: 16
-device: mps
+device: auto
 workers: 4
 optimizer: AdamW
 lr0: 0.001
@@ -37,4 +37,3 @@ plots: true
 val: true
 verbose: true
 exist_ok: false
-

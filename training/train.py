@@ -21,17 +21,40 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type=Path, default=Path("training/config.yaml"))
     parser.add_argument(
+        "--device",
+        help="Override config device: auto, cpu, mps, or a CUDA index such as 0.",
+    )
+    parser.add_argument(
         "--smoke",
         action="store_true",
-        help="Run one epoch on 5% of train data without publishing model weights.",
+        help="Run one epoch on 5%% of train data without publishing model weights.",
     )
     return parser.parse_args()
+
+
+def select_device(requested: str | int | None) -> str | int:
+    normalized = str(requested or "auto").strip().lower()
+    if normalized != "auto":
+        if normalized == "mps" and not torch.backends.mps.is_available():
+            raise SystemExit("MPS was requested but is unavailable in this process")
+        if normalized in {"cuda", "gpu"}:
+            if not torch.cuda.is_available():
+                raise SystemExit("CUDA was requested but is unavailable in this process")
+            return 0
+        return int(normalized) if normalized.isdigit() else normalized
+    if torch.cuda.is_available():
+        return 0
+    if torch.backends.mps.is_available():
+        return "mps"
+    return "cpu"
 
 
 def main() -> int:
     args = parse_args()
     config = yaml.safe_load(args.config.read_text(encoding="utf-8"))
     model_source = config.pop("model")
+    requested_device = args.device or config.pop("device", "auto")
+    config["device"] = select_device(requested_device)
     config["data"] = str(Path(config["data"]).resolve())
     config["project"] = str(Path(config["project"]).resolve())
 
@@ -48,9 +71,6 @@ def main() -> int:
             }
         )
 
-    if config.get("device") == "mps" and not torch.backends.mps.is_available():
-        raise SystemExit("MPS was requested but is unavailable in this process")
-
     model = YOLO(model_source)
     results = model.train(**config)
     save_dir = Path(results.save_dir)
@@ -62,6 +82,9 @@ def main() -> int:
         "ultralytics": ultralytics.__version__,
         "torch": torch.__version__,
         "mps_available": torch.backends.mps.is_available(),
+        "cuda_available": torch.cuda.is_available(),
+        "requested_device": str(requested_device),
+        "resolved_device": str(config["device"]),
         "model_source": model_source,
         "config": config,
     }
