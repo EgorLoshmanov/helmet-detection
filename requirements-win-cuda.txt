@@ -1,0 +1,22 @@
+# CUDA build of PyTorch for Windows.
+#
+# environment.yml installs ultralytics through pip, and on Windows plain PyPI
+# serves a CPU-only torch. Training then silently falls back to the CPU in
+# training/train.py select_device(), which is roughly an order of magnitude
+# slower. Install this file into the conda environment right after creating it:
+#
+#   conda activate fortniteballs
+#   pip install -r requirements-win-cuda.txt
+#
+# The +cu126 local version exists only on the PyTorch index, so --extra-index-url
+# is enough to pull the CUDA build while every other dependency still resolves
+# from PyPI. Verified on Windows 10, driver 595.79, RTX 4060 Laptop (8 GiB).
+#
+# Verify afterwards; all three values must match reports/training/*/environment.json:
+#
+#   python -c "import sys, torch, ultralytics; print(sys.version.split()[0], torch.__version__, torch.cuda.is_available(), ultralytics.__version__)"
+#   -> 3.10.21 2.14.0+cu126 True 8.4.155
+
+--extra-index-url https://download.pytorch.org/whl/cu126
+torch==2.14.0+cu126
+torchvision==0.29.0+cu126
