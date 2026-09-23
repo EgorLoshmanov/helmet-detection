@@ -2,30 +2,17 @@
   "python": "3.10.21",
   "ultralytics": "8.4.155",
   "torch": "2.14.0+cu126",
-  "data": "dataset\\dataset.yaml",
+  "data": "dataset\\dataset_v2.yaml",
   "names": {
     "0": "helmet",
     "1": "no_helmet"
   },
   "splits": {
     "train": {
-      "images": 4000,
+      "images": 4371,
       "objects": {
-        "helmet": 14958,
-        "no_helmet": 4655
-      },
-      "sample_image_shape": [
-        3,
-        640,
-        640
-      ],
-      "sample_boxes": 13
-    },
-    "val": {
-      "images": 500,
-      "objects": {
-        "helmet": 2019,
-        "no_helmet": 596
+        "helmet": 16941,
+        "no_helmet": 15502
       },
       "sample_image_shape": [
         3,
@@ -34,18 +21,31 @@
       ],
       "sample_boxes": 9
     },
-    "test": {
-      "images": 500,
+    "val": {
+      "images": 547,
       "objects": {
-        "helmet": 1989,
-        "no_helmet": 534
+        "helmet": 2023,
+        "no_helmet": 1787
       },
       "sample_image_shape": [
         3,
         640,
         640
       ],
-      "sample_boxes": 3
+      "sample_boxes": 14
+    },
+    "test": {
+      "images": 546,
+      "objects": {
+        "helmet": 2203,
+        "no_helmet": 1644
+      },
+      "sample_image_shape": [
+        3,
+        640,
+        640
+      ],
+      "sample_boxes": 1
     }
   }
 }

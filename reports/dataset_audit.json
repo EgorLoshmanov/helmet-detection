@@ -1,22 +1,58 @@
 {
-  "source": {
-    "root": "dataset/source/hard-hat-detection-v1",
-    "xml_files": 5000,
-    "license": "CC0-1.0 / Public Domain (per Kaggle source page)",
-    "url": "https://www.kaggle.com/datasets/andrewmvd/hard-hat-detection"
-  },
-  "mapping": {
-    "helmet": "helmet",
-    "head": "no_helmet",
-    "person": null
-  },
+  "config": "dataset\\sources.yaml",
   "seed": 20260919,
   "split_ratios": {
     "train": 0.8,
     "val": 0.1,
     "test": 0.1
   },
-  "accepted_images": 5000,
+  "target_classes": {
+    "0": "helmet",
+    "1": "no_helmet"
+  },
+  "sources": [
+    {
+      "name": "hard-hat-v1",
+      "role": "core",
+      "priority": 10,
+      "format": "voc",
+      "license": "CC0-1.0 / Public Domain (per Kaggle source page)",
+      "url": "https://www.kaggle.com/datasets/andrewmvd/hard-hat-detection",
+      "citation": "",
+      "class_map": {
+        "helmet": "helmet",
+        "head": "no_helmet",
+        "person": null
+      },
+      "accepted_images": 5000
+    }
+  ],
+  "dedup": {
+    "perceptual": false,
+    "hash_size": 8,
+    "max_distance": 4,
+    "bands": [
+      13,
+      13,
+      13,
+      13,
+      12
+    ],
+    "removed": 0,
+    "removed_by_kind": {},
+    "examples": []
+  },
+  "dropped_images": {},
+  "balance": {
+    "note": "balance disabled or no filler source"
+  },
+  "negatives": {
+    "limit": 555,
+    "kept": 0,
+    "dropped": 0,
+    "positive_images": 5000
+  },
+  "images_total": 5000,
   "images_by_split": {
     "train": 4000,
     "val": 500,
@@ -53,8 +89,17 @@
       "no_helmet": 42
     }
   },
-  "duplicates_removed": 0,
-  "duplicates": [],
+  "sources_by_split": {
+    "train": {
+      "hard-hat-v1": 4000
+    },
+    "val": {
+      "hard-hat-v1": 500
+    },
+    "test": {
+      "hard-hat-v1": 500
+    }
+  },
   "issues_by_kind": {},
   "issues": [],
   "clipped_boxes": 0,

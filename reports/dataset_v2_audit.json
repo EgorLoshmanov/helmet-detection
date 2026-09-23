@@ -1,0 +1,890 @@
+{
+  "config": "dataset\\sources.yaml",
+  "seed": 20260919,
+  "split_ratios": {
+    "train": 0.8,
+    "val": 0.1,
+    "test": 0.1
+  },
+  "target_classes": {
+    "0": "helmet",
+    "1": "no_helmet"
+  },
+  "sources": [
+    {
+      "name": "shel5k",
+      "role": "core",
+      "priority": 20,
+      "format": "voc",
+      "license": "CC BY 4.0",
+      "url": "https://data.mendeley.com/datasets/9rcv8mm682",
+      "citation": "Otgonbold et al., Sensors 22(6):2315, 2022. doi:10.3390/s22062315",
+      "class_map": {
+        "helmet": "helmet",
+        "head": "no_helmet",
+        "head_with_helmet": null,
+        "person_with_helmet": null,
+        "person_no_helmet": null,
+        "face": null,
+        "person": null
+      },
+      "accepted_images": 4902
+    },
+    {
+      "name": "hard-hat-v1",
+      "role": "core",
+      "priority": 10,
+      "format": "voc",
+      "license": "CC0-1.0 / Public Domain (per Kaggle source page)",
+      "url": "https://www.kaggle.com/datasets/andrewmvd/hard-hat-detection",
+      "citation": "",
+      "class_map": {
+        "helmet": "helmet",
+        "head": "no_helmet",
+        "person": null
+      },
+      "accepted_images": 3
+    },
+    {
+      "name": "shwd",
+      "role": "filler",
+      "priority": 5,
+      "format": "voc",
+      "license": "repository MIT; negatives derive from SCUT-HEAD, academic research use only",
+      "url": "https://github.com/njvisionpower/Safety-Helmet-Wearing-Dataset",
+      "citation": "Peng et al., arXiv:1803.09256, 2018 (SCUT-HEAD)",
+      "class_map": {
+        "hat": "helmet",
+        "person": "no_helmet",
+        "dog": null
+      },
+      "accepted_images": 5854
+    }
+  ],
+  "dedup": {
+    "perceptual": true,
+    "hash_size": 8,
+    "max_distance": 4,
+    "bands": [
+      13,
+      13,
+      13,
+      13,
+      12
+    ],
+    "removed": 6819,
+    "removed_by_kind": {
+      "perceptual": 1880,
+      "exact": 4939
+    },
+    "examples": [
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers1626.png",
+        "kind": "perceptual",
+        "distance": 1,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers124.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers1927.png",
+        "kind": "perceptual",
+        "distance": 2,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1178.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers1949.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1943.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers2089.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers100.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers2119.png",
+        "kind": "perceptual",
+        "distance": 2,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1546.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers216.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1527.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers2239.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2039.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers2278.png",
+        "kind": "perceptual",
+        "distance": 1,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers121.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers2413.png",
+        "kind": "perceptual",
+        "distance": 2,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1563.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers2462.png",
+        "kind": "perceptual",
+        "distance": 1,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2314.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers2486.png",
+        "kind": "perceptual",
+        "distance": 1,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2416.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers2768.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1930.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers2842.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1345.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers2952.png",
+        "kind": "perceptual",
+        "distance": 1,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2700.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3024.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2043.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3037.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1662.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3142.png",
+        "kind": "perceptual",
+        "distance": 3,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2150.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3143.png",
+        "kind": "perceptual",
+        "distance": 2,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2495.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3149.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2630.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3194.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1906.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3206.png",
+        "kind": "perceptual",
+        "distance": 3,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1610.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3258.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1446.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3280.png",
+        "kind": "perceptual",
+        "distance": 1,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers3180.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3331.png",
+        "kind": "perceptual",
+        "distance": 2,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1327.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3335.png",
+        "kind": "perceptual",
+        "distance": 3,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers266.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3339.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1801.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3345.png",
+        "kind": "perceptual",
+        "distance": 2,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1315.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3386.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1958.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3392.png",
+        "kind": "perceptual",
+        "distance": 1,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1938.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3394.png",
+        "kind": "perceptual",
+        "distance": 1,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2706.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers343.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2547.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3453.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2905.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3459.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1008.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3471.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1367.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3493.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2506.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3533.png",
+        "kind": "perceptual",
+        "distance": 1,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2666.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3548.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers3355.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3549.png",
+        "kind": "perceptual",
+        "distance": 2,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1706.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3556.png",
+        "kind": "perceptual",
+        "distance": 2,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers3553.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers356.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers3520.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3596.png",
+        "kind": "perceptual",
+        "distance": 3,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2808.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3725.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2769.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3735.png",
+        "kind": "perceptual",
+        "distance": 3,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2622.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3755.png",
+        "kind": "perceptual",
+        "distance": 4,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers157.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers377.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2016.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers3917.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers1652.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers393.png",
+        "kind": "perceptual",
+        "distance": 1,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2088.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers394.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2760.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers4.png",
+        "kind": "perceptual",
+        "distance": 3,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers2676.png"
+      },
+      {
+        "source": "shel5k",
+        "file": "hard_hat_workers411.png",
+        "kind": "perceptual",
+        "distance": 0,
+        "kept_source": "shel5k",
+        "kept_file": "hard_hat_workers3573.png"
+      }
+    ]
+  },
+  "dropped_images": {
+    "shel5k:ignored_only": 3
+  },
+  "balance": {
+    "anchor": 18922.0,
+    "desired_objects": {
+      "helmet": 18922.0,
+      "no_helmet": 18922.0
+    },
+    "core_objects": {
+      "helmet": 18922,
+      "no_helmet": 6035
+    },
+    "filler_objects_added": {
+      "helmet": 2245,
+      "no_helmet": 12898
+    },
+    "unmet_deficit": {
+      "helmet": 0.0,
+      "no_helmet": 0.0
+    },
+    "filler_images_added": {
+      "shwd": 559
+    },
+    "filler_groups_available": 5854,
+    "filler_groups_used": 559
+  },
+  "negatives": {
+    "limit": 607,
+    "kept": 0,
+    "dropped": 0,
+    "positive_images": 5464
+  },
+  "images_total": 5464,
+  "images_by_split": {
+    "train": 4371,
+    "val": 547,
+    "test": 546
+  },
+  "objects_by_split": {
+    "train": {
+      "helmet": 16941,
+      "no_helmet": 15502
+    },
+    "val": {
+      "helmet": 2023,
+      "no_helmet": 1787
+    },
+    "test": {
+      "helmet": 2203,
+      "no_helmet": 1644
+    }
+  },
+  "strata_by_split": {
+    "train": {
+      "helmet": 3023,
+      "helmet+no_helmet": 926,
+      "no_helmet": 422
+    },
+    "val": {
+      "helmet": 378,
+      "helmet+no_helmet": 116,
+      "no_helmet": 53
+    },
+    "test": {
+      "helmet": 378,
+      "helmet+no_helmet": 116,
+      "no_helmet": 52
+    }
+  },
+  "sources_by_split": {
+    "train": {
+      "hard-hat-v1": 2,
+      "shel5k": 3914,
+      "shwd": 455
+    },
+    "val": {
+      "hard-hat-v1": 1,
+      "shel5k": 486,
+      "shwd": 60
+    },
+    "test": {
+      "shel5k": 502,
+      "shwd": 44
+    }
+  },
+  "issues_by_kind": {
+    "image_note": 52
+  },
+  "issues": [
+    {
+      "source": "shwd",
+      "file": "000011.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000061.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000068.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000091.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000106.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000153.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000158.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000168.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000177.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000184.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000226.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000267.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000268.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000284.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000290.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000291.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000393.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000397.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000457.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000458.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000512.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000514.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000528.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000548.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000599.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000601.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000640.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000686.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000687.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000734.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000738.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000796.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000797.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000798.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000799.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000815.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000827.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000909.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "000985.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "001042.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "001046.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "001150.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "001354.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "001358.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "001386.JPG",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "001387.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "part2_000609.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "part2_000878.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "part2_001057.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "part2_001363.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "part2_001696.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    },
+    {
+      "source": "shwd",
+      "file": "part2_001825.jpg",
+      "kind": "image_note",
+      "detail": "bytes present after the EOI marker"
+    }
+  ],
+  "clipped_boxes": 0,
+  "link_modes": {
+    "hardlink": 5464
+  }
+}

@@ -7,3 +7,5 @@ dependencies:
   - pip:
       - ultralytics==8.4.155
       - kagglehub==1.0.2
+      - pillow==11.3.0
+      - pyyaml==6.0.3
