@@ -11,6 +11,24 @@ ROC-RK3588S-PC. Базовая модель YOLOv8n различает клас�
 
 ## Быстрый старт
 
+### Приложение для Firefly и веб-панель
+
+Добавлено приложение `firefly_app`: RKNN FP16, зона контроля ROI, подтверждение
+по времени, состояния SAFE/PENDING/ALARM/FAULT, журнал SQLite со снимками,
+метрики CSV и локальная веб-панель. На Windows можно проверить интерфейс без платы:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r firefly_app/requirements.txt
+.\.venv\Scripts\python.exe -m firefly_app --demo
+```
+
+Панель: <http://127.0.0.1:8080>. Демо использует синтетические данные.
+Запуск с камерой/NPU, настройка периферии и ограничения проверок:
+[docs/edge-monitor.md](docs/edge-monitor.md).
+
+### Обучение и локальный PyTorch-инференс
+
 Требуется Conda или Miniconda. После клонирования репозитория:
 
 ```bash
