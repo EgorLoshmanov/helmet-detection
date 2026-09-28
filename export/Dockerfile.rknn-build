@@ -1,0 +1,25 @@
+FROM python:3.10-slim-bookworm
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends build-essential cmake libglib2.0-0 libgl1 libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN python -m pip install --no-cache-dir \
+    "numpy==1.26.4" \
+    "protobuf==3.20.3" \
+    "onnx==1.16.1" \
+    "onnxruntime==1.23.2" \
+    "torch==2.2.0" \
+    "opencv-python-headless==4.10.0.84" \
+    "onnxoptimizer==0.3.13" \
+    "fast-histogram==0.14" \
+    "psutil==7.1.0" \
+    "ruamel.yaml==0.18.15" \
+    "scipy==1.15.3" \
+    "tqdm==4.67.1"
+
+RUN python -m pip install --no-cache-dir --no-deps \
+    https://raw.githubusercontent.com/airockchip/rknn-toolkit2/v2.3.2/rknn-toolkit2/packages/arm64/rknn_toolkit2-2.3.2-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+
+WORKDIR /work
+ENTRYPOINT ["python", "export/convert_rknn.py"]

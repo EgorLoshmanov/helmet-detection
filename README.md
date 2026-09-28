@@ -5,9 +5,9 @@ ROC-RK3588S-PC. Базовая модель YOLOv8n различает клас�
 `no_helmet`; финальная версия будет работать через RKNN на NPU RK3588S и
 управлять световой и звуковой сигнализацией.
 
-> Базовая PyTorch-модель обучена и запускается, но пока неудовлетворительно
-> переносится с исходного строительного датасета на обычную веб-камеру.
-> Перед экспортом в ONNX/RKNN требуется датасет v2 с кадрами целевой камеры.
+> Модель v2 экспортирована в ONNX и FP16 RKNN и проверена на сохранённых кадрах.
+> Проверка на видео целевой камеры пока невозможна: камера не подключена к стенду.
+> Экспериментальный INT8 не прошёл сравнение с ONNX и не готов для сигнализации.
 
 ## Быстрый старт
 
@@ -193,6 +193,49 @@ python export/validate_onnx.py
 используйте `python export/validate_onnx.py --images path/to/first.jpg path/to/second.jpg`.
 Этот тест показывает совпадение двух форматов модели; кадры v1 могут встречаться
 в обучении v2 и не подходят для независимой оценки качества детектора.
+
+## RKNN на Firefly
+
+Конвертация использует RKNN-Toolkit2 `2.3.2` для Linux ARM64 и Python 3.10.
+Проверенная команда на Mac с Docker Desktop:
+
+```bash
+docker build --platform linux/arm64 -f export/Dockerfile.rknn-build \
+  -t fortniteballs-rknn:2.3.2 .
+docker run --rm --platform linux/arm64 -v "$PWD:/work" -w /work \
+  fortniteballs-rknn:2.3.2 --mode fp16
+```
+
+В результате появляется `models/helmet_detector_fp16.rknn` (артефакт исключён
+из Git). На Firefly он проверен через `export/infer_rknn.py` на 13 одинаковых с
+ONNX кадрах: сопоставлены 174 из 175 детекций, медиана вызова
+`RKNNLite.inference` — 40.98 мс. Это не полный FPS системы. Отчёт:
+`reports/rknn_fp16_comparison.json`.
+
+Для воспроизведения **экспериментальной** INT8-сборки сначала восстановите
+калибровочные кадры из подготовленного датасета v1, затем разделите выход ONNX:
+
+```bash
+python export/prepare_calibration.py --restore
+python export/split_onnx_outputs.py
+docker run --rm --platform linux/arm64 -v "$PWD:/work" -w /work \
+  fortniteballs-rknn:2.3.2 --onnx models/helmet_detector_split.onnx \
+  --mode int8 --dataset export/calibration_dataset.txt \
+  --output models/helmet_detector_int8_split.rknn
+```
+
+Если `reports/rknn_calibration.json` отсутствует (новая выборка), вместо
+`--restore` запустите `python export/prepare_calibration.py` с новыми путями
+отчёта и манифеста. Объединённый выход исходного ONNX непригоден для INT8:
+вероятности классов округляются до нуля. Разделение восстанавливает вероятности,
+но текущая INT8-модель всё ещё выдаёт слишком много лишних детекций. До
+дальнейшей работы с квантизацией используйте FP16. Подробности, версии и SHA-256:
+[reports/rknn_conversion.md](reports/rknn_conversion.md).
+
+Эксперимент со смешанной INT8/FP16-квантизацией воспроизводится скриптом
+`export/convert_rknn_hybrid.py` в том же Docker-образе (с `--entrypoint python`).
+Он улучшил число детекций, но также не прошёл контрольное сравнение и не является
+моделью для тревожной сигнализации.
 
 ## Firefly
 

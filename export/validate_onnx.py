@@ -114,30 +114,40 @@ def box_iou(first: np.ndarray, second: np.ndarray) -> float:
     return intersection / denominator if denominator else 0.0
 
 
-def compare_detections(pt_boxes: np.ndarray, onnx_boxes: np.ndarray) -> dict:
+def compare_detections(
+    pt_boxes: np.ndarray,
+    onnx_boxes: np.ndarray,
+    *,
+    max_box_delta_px: float = MAX_BOX_DELTA_PX,
+    max_conf_delta: float = MAX_CONF_DELTA,
+    min_match_iou: float = MIN_MATCH_IOU,
+) -> dict:
     remaining = set(range(len(onnx_boxes)))
+    unmatched_reference = []
     matched = 0
     max_box_delta = 0.0
-    max_conf_delta = 0.0
+    observed_max_conf_delta = 0.0
     min_iou = 1.0
     for reference in pt_boxes:
         same_class = [index for index in remaining if int(onnx_boxes[index, 5]) == int(reference[5])]
         if not same_class:
+            unmatched_reference.append(reference.tolist())
             continue
         index = max(same_class, key=lambda candidate: box_iou(reference[:4], onnx_boxes[candidate, :4]))
         candidate = onnx_boxes[index]
         overlap = box_iou(reference[:4], candidate[:4])
-        if overlap < MIN_MATCH_IOU:
+        if overlap < min_match_iou:
+            unmatched_reference.append(reference.tolist())
             continue
         remaining.remove(index)
         matched += 1
         min_iou = min(min_iou, overlap)
         max_box_delta = max(max_box_delta, float(np.max(np.abs(reference[:4] - candidate[:4]))))
-        max_conf_delta = max(max_conf_delta, float(abs(reference[4] - candidate[4])))
+        observed_max_conf_delta = max(observed_max_conf_delta, float(abs(reference[4] - candidate[4])))
     passed = (
         matched == len(pt_boxes) == len(onnx_boxes)
-        and max_box_delta <= MAX_BOX_DELTA_PX
-        and max_conf_delta <= MAX_CONF_DELTA
+        and max_box_delta <= max_box_delta_px
+        and observed_max_conf_delta <= max_conf_delta
     )
     return {
         "pt_count": len(pt_boxes),
@@ -145,7 +155,9 @@ def compare_detections(pt_boxes: np.ndarray, onnx_boxes: np.ndarray) -> dict:
         "matched_count": matched,
         "min_matched_iou": min_iou if matched else None,
         "max_box_delta_px": max_box_delta if matched else None,
-        "max_confidence_delta": max_conf_delta if matched else None,
+        "max_confidence_delta": observed_max_conf_delta if matched else None,
+        "unmatched_reference": unmatched_reference,
+        "unmatched_candidate": [onnx_boxes[index].tolist() for index in sorted(remaining)],
         "passed": passed,
     }
 

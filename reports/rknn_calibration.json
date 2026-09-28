@@ -1,0 +1,685 @@
+{
+  "purpose": "Provisional INT8 calibration from v1 training images; replace with target-camera scenes",
+  "seed": 20260919,
+  "imgsz": 640,
+  "images": 96,
+  "per_group": {
+    "helmet_only": 32,
+    "no_helmet_only": 32,
+    "both_classes": 32
+  },
+  "records": [
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4595.png",
+      "source_sha256": "06c6fbea66972054e4642eccd87473295df6d0035eddb755664cc7e329f82358",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4595.png",
+      "calibration_sha256": "3a3d21de9f457f5cea11a93656fdc1dee1d295949d8fac82328788f0440e3eb0"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1574.png",
+      "source_sha256": "3be92e8ee01b340a20775792a49c17da9155f33a9eed5c8bb14e1e5ffe8e5dcd",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1574.png",
+      "calibration_sha256": "31a3b65d63c5087f2d16d4b763541c96851241fe7c6ca15e37e38fa935f6d6bd"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers3012.png",
+      "source_sha256": "06f6c49b5e2e7e7902752a92a341c8fee5fa09cd14e4b697c9192f32bcfa8ab0",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers3012.png",
+      "calibration_sha256": "94237b272e06bfba48a8274a9f31c899befc1b71fde030d1ba4ed51d4b87c26e"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1812.png",
+      "source_sha256": "f74d1928062fc02e2a93e34275c8d7b1a8550ad45ebdf6177dfcc7e16130b343",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1812.png",
+      "calibration_sha256": "2c29d9a1f96082b732b6cb76003ba64b1b84741ff1179a225a2bf25fb423843b"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers956.png",
+      "source_sha256": "108043f9a5155042f5ac286c958ad8772091db0bbd0bc844626d00b182ab438a",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers956.png",
+      "calibration_sha256": "a9bc6c6198dd03c82a4a4d3d0aea9fc41c4a225dffd782acb81dd2a466a4f1d9"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4717.png",
+      "source_sha256": "180c5a09c448831b7c2b1f77a8add59763deda713f8e66937b367404ad24e037",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4717.png",
+      "calibration_sha256": "516692a6caf4fd94790988ee21ee02a1689670077da8b3042b951075f4d6fa2e"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers73.png",
+      "source_sha256": "21c5aa5f8dea188b8fdebf7fe1accc59e843d8d38266df1a28915d78958a409f",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers73.png",
+      "calibration_sha256": "feaf928592a21d3a7957a05d26afd004cfbb604fa8007c8ff4386588e73b2a85"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers829.png",
+      "source_sha256": "92cf66082190cbf3af35bc7cd6ed9223b0a0d761892478a570de27272cec0280",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers829.png",
+      "calibration_sha256": "24a83066482e5f859deeed86f900e6f9856ed7732dd24c4a763f237e478bd2b1"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers2946.png",
+      "source_sha256": "a57c5c39e8b5d4ca560d017055ef5272ea771852a90477f168d500905f550ce1",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers2946.png",
+      "calibration_sha256": "3067c30c87259ba900cee2f05a10589a00437dfbe6fe075d98e9f64520988f36"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers3306.png",
+      "source_sha256": "c078e0f5435604c90b8e1241181c6de3180265687fa56fb0d89db633c0ff561d",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers3306.png",
+      "calibration_sha256": "0a45695767a4062b131c77e23ee38c0ca7e7ad194802a9f1af031e8be5372ec3"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers581.png",
+      "source_sha256": "e0476685f9349500769bf4570c3d2732394ecb390baae4ceb6764348fd16ec3c",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers581.png",
+      "calibration_sha256": "75f54029b62d3620a944a802323172d2d5cb0c1367876e14c9760f32b42a9f7e"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4195.png",
+      "source_sha256": "2e8432938fddf1b77648993a1fae59a61c4570a6e833b780614600e8872d27dd",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4195.png",
+      "calibration_sha256": "b4a5f9359bded1383c46b1f2ec7fb3ba5a85af07f79dbfe02a339b275e7489b2"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers2614.png",
+      "source_sha256": "626afa2ffee21cfc514841ed8d281e5a5046c53b6f4d0395348745dd8228d094",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers2614.png",
+      "calibration_sha256": "d9e06af0e38a365e66843ff3f9b087b46dc091e391708ac070e9d2000a5af5e0"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers133.png",
+      "source_sha256": "d7edb52fda86a98d992896cd3acbc3a98119530d52c282f431a2c75b2c2f7f01",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers133.png",
+      "calibration_sha256": "ac041e3fc6d49f518ce9cbbb1e329d18bd9c2084ab0a57cfe3645d20337f12e8"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1368.png",
+      "source_sha256": "5a58f6c58bb86e5cf74c3f6a3f659b531a587d041bcfc4f5e0f67e4f90a71d10",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1368.png",
+      "calibration_sha256": "40bf1b59485df1b56dc84000f4f6afc1fb3c004c7d25ca81adb669647ac77e43"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers3455.png",
+      "source_sha256": "0fe208f777daff9c1ebc7f8efa263b3a0b5bf5222b26298438ec111fbf83e208",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers3455.png",
+      "calibration_sha256": "29ee1411701d9e10932f52571fc97fbab32bc0a9b187fa3f9911555582c102ad"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1547.png",
+      "source_sha256": "2c6a1ecb620439b63134bb293abe17ee73d83637982c9bbed67c6eeb96b1a9eb",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1547.png",
+      "calibration_sha256": "19b0445fece39381bb2565000fca58ce73f283bd4c829d49e95afc7ffe649108"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers407.png",
+      "source_sha256": "13cdafe9d824c9838eec361c4a9bc852590a950ff3df2b9435b8ca2631594cf9",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers407.png",
+      "calibration_sha256": "e54b9aa1934b5c4491cbac64e7944bb880aafab5437fea6dd09d6cbb12d5729c"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1138.png",
+      "source_sha256": "de97cf4b2891bd00c687dd6f4296bac8d0ba0d697cba520995511dbc99b79ad4",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1138.png",
+      "calibration_sha256": "51b9215a24d7eaac77ea30f827d6f805bed071de68b40aa2de858eb32748f8ab"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers2833.png",
+      "source_sha256": "c9f4971f45882e9cb39ef4d89e22a17f66cd2e704de68bcfe9d7f55da6369d6a",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers2833.png",
+      "calibration_sha256": "c6997ff5156b02b4396c1903924f21d312d75ff9cf335ed7d9f062d9f214ba3e"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers435.png",
+      "source_sha256": "c6173d2a960da7941bd3425c70ad9488faed353731cd2e348ffb25872f22ffc5",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers435.png",
+      "calibration_sha256": "ee110c3f98f437049e7931a647b5e07069e1358dad49f563351c6ae69972995c"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4899.png",
+      "source_sha256": "52bdad9c233d36f3bdfaa99e8cc82373dce1a9b653b2925c3760cfecdb7b7748",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4899.png",
+      "calibration_sha256": "07e35448496e8f134943b2318035b2b2bc23f05a5346642255202b5a9a84adfb"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1143.png",
+      "source_sha256": "e25ba99b6ced30602fd571c19cc0b70beec3894eea3faeb20a051a71ed9477b3",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1143.png",
+      "calibration_sha256": "beb462f6209c0362f532472a741169d58429af2fc526b5313ab67a31e8509f9b"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers320.png",
+      "source_sha256": "916bd2acfdeed9ff2ad4a7d5921047ab4cda109c21b487a271d1eb95062557ff",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers320.png",
+      "calibration_sha256": "04483b3d6fa8633e6c00e66dec2b144e549165a366a14245586dc189f4106dc8"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1025.png",
+      "source_sha256": "750b8080b9041c10553dc65dc54c82ec4272326b6fb57789b1d39b2c288d4575",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1025.png",
+      "calibration_sha256": "45c91bc7f493b73ec88c0099038c8fd69f2d948056d3f1815643ed77961bf502"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1216.png",
+      "source_sha256": "a24e16631710ca314fe297813f6ad9ffd93eaa6dc59cf677580799d05c78b85d",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1216.png",
+      "calibration_sha256": "bff77541bc55d6aa94bed87ea9c0ff665f80e973dd6e1a9bc991c33344ad5e71"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4829.png",
+      "source_sha256": "d603d543b7c7a75c9eb39ca23966783c4c07bf3ab435f895e856a18a55dfc899",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4829.png",
+      "calibration_sha256": "24a726c93a40f73aa6eb35383a06364ddd8842a3f3003263f7eea826d4306263"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4736.png",
+      "source_sha256": "fe03e2b16ce7798e9d2648c42c7803a7c9e7f6c7ec6cda1d138a4b8b51eeb3b7",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4736.png",
+      "calibration_sha256": "f585a026f500cac2d46e2353212f14eddaeb68f78e86d1f72acdf59a977ec925"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers3867.png",
+      "source_sha256": "2def04e3794b09fa6d84be071da15885f227cfee1e6d27c287d5d2f29fa55554",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers3867.png",
+      "calibration_sha256": "aebcedcf4498caf5e86c9764de602807ea20b41fcb8e79f6bd5d49bc93422a9f"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4509.png",
+      "source_sha256": "366a9f2adc4735080efdba82b20531bc1b5c8266072ebf477851b0c30d309ea5",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4509.png",
+      "calibration_sha256": "40b2897d5c07e7f8ed36b44fd91f480d4af59811eee39dec97729c3a574bac5d"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers2321.png",
+      "source_sha256": "85671e04137a8182d8fa9801a9c263fa8bb6fd329a42b931dbe3518ef95e699d",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers2321.png",
+      "calibration_sha256": "74dc172341621d87ad029822c8d7496e69634119ba2c876dde6ade830171febc"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4045.png",
+      "source_sha256": "1360a4f467d37135fe677f237ce6abbba79df3c0e8f1fded968d6faf626e6aae",
+      "group": "helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4045.png",
+      "calibration_sha256": "aea0b7c4b5a14335eee6c4e15474ff05922fdcdde50110c458ee2ab1a7e0ebab"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1117.png",
+      "source_sha256": "572b7a749d841f94c9d0754f2017904c42e88f5e386fb14b00eb9017a8310ba7",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1117.png",
+      "calibration_sha256": "7758f00c73a79cca367d6b9e9431c9a733e9cecf69f0a6a2b9ab3352812b5805"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers2701.png",
+      "source_sha256": "c1a3eb18cfd44449b3fcd70a8c1a41655ecced3c8c8407ebaa55d3add24eb5f6",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers2701.png",
+      "calibration_sha256": "9124fc0b2806c16b1f34ffccc05cce4d7819f77bc94147024abe0c8895c33b74"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4623.png",
+      "source_sha256": "89cc0475d6fcd03975f6d8e010136a2ef3df3a131cc9e51d252bfbe2c6194ecd",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4623.png",
+      "calibration_sha256": "cf79971c3646bf57e93a0e49dcde2df61727d5976d5551af15fee1522aca1804"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4570.png",
+      "source_sha256": "624664ad3d0c27f4657e78b8c7796cda8c6250c0e3952fc96be8c44044b261d6",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4570.png",
+      "calibration_sha256": "4f7fbc7c8d6dc57ceb5ad7e74979a77c72bbd40c0c51828eb80d42d5c4ed14f6"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers2108.png",
+      "source_sha256": "3497bc27a9bcea10812a3f76bbcf2d94efa224dcc0196dda0b2cb3d8cd901e50",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers2108.png",
+      "calibration_sha256": "589e42f625e93253f31f3ef1ee06b6f73f28b625d1fd4ff1595bd92a18a8511f"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1771.png",
+      "source_sha256": "4f7bdb78d837efa3a320d72e0925b661453ab5e59f8237930c89d7af88294b89",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1771.png",
+      "calibration_sha256": "f31d518eb3e2e4dd49287e99858a6b3fcc736305352a9817e32c799afabb8664"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers3113.png",
+      "source_sha256": "92cf367af94e16b6ead3d1da959b040f10b1deb50665356afc1ed64905bc4842",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers3113.png",
+      "calibration_sha256": "119d2a22d22242381fc0c0e1818c4048d095aed41bb75e7ac2df6093fcb94515"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers414.png",
+      "source_sha256": "c803936b0305ce62f08eded34ac671ce9a860d1f43f0259c8761425c968660f1",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers414.png",
+      "calibration_sha256": "567b0c9574f8acff820a47cff6b3e26fdaca85fee07d869fbec55ad219db1445"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1641.png",
+      "source_sha256": "5a2c9abbcd460618e1a233d0bd8a7ba7b6ce9366a261c025203a578e31046166",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1641.png",
+      "calibration_sha256": "3b905c982a31a25c3ae93f5ad84b7b657b33286311cc8ec90405bc84ca98095e"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1648.png",
+      "source_sha256": "4d9ae9411544ea8ca3428d9b3fb7dcbd02ae04b4bcef3bca6a22da1bc1df4163",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1648.png",
+      "calibration_sha256": "1995d9a082077a4a884bc562207ce41404bd7424a59f9d4591fb10ba17446d2d"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1494.png",
+      "source_sha256": "4d0a4654993fe5d91134c995e93dd87929f2bc99617fc62e9c8486137f5cc1a2",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1494.png",
+      "calibration_sha256": "c97f1582db42a7fdb58437cb2a07c00e56713c6fe2697fc5d0ddd7e4f4b66b2f"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1014.png",
+      "source_sha256": "ac6658c95995e3cc2340dc371853d2af6fea188e6f9c8a1e0af00f64dce180b1",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1014.png",
+      "calibration_sha256": "12cfc0e9b57ee3c831bfbc70f5611e63b5cccb1e2e9f54b75945403decc2e6d6"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1038.png",
+      "source_sha256": "75ced6b122970c5b1ed0c87b66fa20339dce2c2377d4c095aaca49a37edeae73",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1038.png",
+      "calibration_sha256": "96a14732485601d1b6d163fe23af984b9b2e79de5275b8995b00c850383268c5"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers239.png",
+      "source_sha256": "d7a98867e4854819836bb6555d00c04e9fe60b6e180d344cfcee3026ec119261",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers239.png",
+      "calibration_sha256": "49f3ed0dc6248f64edf237af7de926270518e6f5fc482472e3e30bdea00ea29a"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers267.png",
+      "source_sha256": "ffb8ab2764101769cf4fe4fecf3ae6b16d12a37f0bf0e026222375723d9974dc",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers267.png",
+      "calibration_sha256": "fc111dfa40ccf01c91488b5bca550f74b7693b694d09762d32bc2f597f769eaa"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers2034.png",
+      "source_sha256": "b9f90a7e5be2e10b593d7c8170fdc384afaabb206a342fc231e810cd4f85a0f1",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers2034.png",
+      "calibration_sha256": "7bd16abe95a636092583210b3f773cd352f3a16836a9616fe6ebd4461754a966"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers149.png",
+      "source_sha256": "211d92bd4ae8ed19eaae32ee1cecacefeef8ade7c89414ad3fa5774ac6391003",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers149.png",
+      "calibration_sha256": "4e8eef4809e31f189b85429013d9374f9da4118ad0b60d4234dddfc9007df264"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4270.png",
+      "source_sha256": "e32961508972dc0f626523552a0ce62ed9a7c39892c40be4f8c8bc1f6975566a",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4270.png",
+      "calibration_sha256": "4d00cced16f1b399a47a1267c658d230831ccb5ef75ca5a9b9d12908e625215d"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers3380.png",
+      "source_sha256": "1a05821d97ff136c78731bf9c02fd290e022d50a0011cd43cf988bae520f57c6",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers3380.png",
+      "calibration_sha256": "f4c572ca7844f5a7a2acdc05700a5509e059e23e6257b8e959894547c06f501d"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers2648.png",
+      "source_sha256": "2c3b579fbbbace5cbb47bfe2eafdc036c79622b05707115c4bd4def9bb6f2064",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers2648.png",
+      "calibration_sha256": "bf98544c792e1de402d164a90db3e84c512155aa468f517d3495174aeea0d8a5"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1035.png",
+      "source_sha256": "dbb88991d92082eed12aa1e5b212aeb04aa5b77d74ed471b83fbf714191fb874",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1035.png",
+      "calibration_sha256": "e88d26bde65a822450d526436dd7c28af27d10262fc9274e6bd007046ec42976"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers3717.png",
+      "source_sha256": "cb83ada0094d57ae67d2a3c806ee7645c709d9f61e1fa1e8c985c40b09bb4fd4",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers3717.png",
+      "calibration_sha256": "caa289a0439960cecfff67d5ad70b4721bdc26076d6217322ddea76bee77744d"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers715.png",
+      "source_sha256": "59fd008ab6e4df270dfd59ec40ba5c50bd800bd331ce5772602702fc597c00c0",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers715.png",
+      "calibration_sha256": "aef5b0cdde0ea46b11d9f45177bb7dd218b0ee120513d417e82b6414dd2204d8"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers3719.png",
+      "source_sha256": "9b47aa42e3f6a7a8f448995bed3c13d15fc2c5943c2289fa68d7d4638d6ff806",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers3719.png",
+      "calibration_sha256": "a4db9612c26259c922196178e692cdacef4e323d75d66f3ead34331ad21b14a0"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4753.png",
+      "source_sha256": "f13bf187769f61ba3c87a34c27a0e404b3ac2c514409eed74c44f6a9cfff8c05",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4753.png",
+      "calibration_sha256": "ac7bc428e93073f0625c0d05a1231d25b326fb55691278895dbe7840bb0b1db4"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4371.png",
+      "source_sha256": "037881d1fb062bd81cc31eacb82d27c6a7fff463e2449354148e383d23acc7ed",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4371.png",
+      "calibration_sha256": "41eadda95073dcd78a58228da026a7572dba7e00f49d6544798d14a698c34873"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers2503.png",
+      "source_sha256": "4f2f4c439b061822acaf281569a5b9edb0d3da0206aa79a7bd6e669dfe9aed59",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers2503.png",
+      "calibration_sha256": "136372733a385a9d275c1797f895fbc760340e313a6c420d84aa78b8fca108ee"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1670.png",
+      "source_sha256": "443f36c97836f295b6c84fe4e83da5b35ad83ee4ccb41051e0f4030adbe2e2f2",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1670.png",
+      "calibration_sha256": "57a5804149033436560194227f010ae73ae7998402253e722f99637e2f040050"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1371.png",
+      "source_sha256": "2eb869cb09d18d0eb90eef58efe0d1fcea11c336e76b9f0be8bb86fd55ed750f",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1371.png",
+      "calibration_sha256": "ed62e320bc85b732eceb09e1408dcb34c5fa3092b27dd71f10a655f1a6504f35"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers671.png",
+      "source_sha256": "fa374c32abdad472426a84a5feedee345128c98f87477fc3529a2cbd60c76a64",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers671.png",
+      "calibration_sha256": "72c8fcaade2f6df801fb6262605fec7020379bc8dc32ca784dd52f9244e3c570"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers2490.png",
+      "source_sha256": "1682713514c2e413c8010a321e8d89f6656ed367510e3c7d81d08d54defa855b",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers2490.png",
+      "calibration_sha256": "ff32820c38c4f3bd33639459dc56a9e1310d6692a888b33acbe4444b83938c36"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers2274.png",
+      "source_sha256": "9efa137d60ca9ece54b5717f9348f205882097ed1387f8c9d72d806c0dd385ff",
+      "group": "no_helmet_only",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers2274.png",
+      "calibration_sha256": "36c342c37c3c5b920cf895cfff6ac1784ae534e757f344e54490b36a73aacbce"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1230.png",
+      "source_sha256": "f2b22d9c8da0cfa5e7bba6ca0ffeb7eb0af17f252ed530e4e041bf32bbccedfa",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1230.png",
+      "calibration_sha256": "80eabee94e302717a646c1b07dc84bcb0131905f50d99637a5e03e68cd2690a9"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers3349.png",
+      "source_sha256": "dee1b1ff8ca18c4000b5f59842848b9bcfdc9575817c3fad716ebdd7212b812e",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers3349.png",
+      "calibration_sha256": "dcc61349091227f6b08cc35fd8324bed5f4e02ad2c5a6740cdf8a1be7b7b1735"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers830.png",
+      "source_sha256": "7fbe018a7f2eb8409f1acd3bb12754c4b38a02a60e970b874fd5b8093a521fd4",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers830.png",
+      "calibration_sha256": "edbb04146ba2e046ffc88ea10c1dd67af2421b8912e816f883b7886b01c99848"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers925.png",
+      "source_sha256": "06c54281d1d60af8b3d3883db681b3ef7a68e19cbc28241c42cf0391763046bd",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers925.png",
+      "calibration_sha256": "3a85b573e23213dcdba0bc2f51cd86c406e0bea70120c856ef98797713ca6336"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers2231.png",
+      "source_sha256": "bd4b383f5a10c42caa061b5f37ed934fb036d87c3fae6248d5fa4919dc39540b",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers2231.png",
+      "calibration_sha256": "549aa5cd3c4907d42d9dd217a1a7ed9effda96957b0400af8eef7f5b8635699f"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4918.png",
+      "source_sha256": "645661ffeef09495711102ffc369a26cb416341ae1ef630f0ff37593245eebed",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4918.png",
+      "calibration_sha256": "14adeff93b9f24414cde7a621d5b1503e46e2bbeaffe7bf3438d3a2ba850a9cc"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers2003.png",
+      "source_sha256": "0188cb95dd5623aa4f97d4dff5d3760e9ca4f1cd9be108503a4b0bec3a68e865",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers2003.png",
+      "calibration_sha256": "f8be5bfd9e89e09d72268cca7561fd0f32d4b4751cf75462662f1d1a6d09ec5c"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4138.png",
+      "source_sha256": "7e4e5acfdfc1e1180b5f39bda9cf77c2436a0464b0bed31d929194fff3df2f0f",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4138.png",
+      "calibration_sha256": "03944e8b7e7741e64ac651354034f208cd24509c6d48c533d9a13d7a2f185b83"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4202.png",
+      "source_sha256": "8928fab86fd08280a5c274102edb9083f818aa87e059997ac5a02329b594d556",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4202.png",
+      "calibration_sha256": "f0640df48e62e5767fa8ce803d21a68909163b6bd5fa7ed8a44860ac75c6ef4a"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers676.png",
+      "source_sha256": "1d2487c82daafc080a30a9a149ef7460ce176050d19075b9a70663043cd90420",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers676.png",
+      "calibration_sha256": "a23e01ccea40ae48e755df6cf9c21df2ee4f4a877809e99926253db7a215852b"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers3568.png",
+      "source_sha256": "66b1bcbf7b511d913c864933df6ebe5c94a1d2ac9591203eb866f1f8ad7b0ebd",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers3568.png",
+      "calibration_sha256": "41dc82ddc0fa0910496a21bbd3e62de0ea284851fe417baf5ce19dbbfde51f12"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers3254.png",
+      "source_sha256": "6f142587a45a510eaf5210518c2c8078e497161b4627da3117bd34ab86ccd2d3",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers3254.png",
+      "calibration_sha256": "865cbcd0d48c5a834c8b643bbae5e0c85558323a63da30419850e7794d10f82e"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1994.png",
+      "source_sha256": "f405a50abef3a961c3650b665e7cbe55b16f8fdb98f83a9d1ab79d1a5e12692a",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1994.png",
+      "calibration_sha256": "eeb066bba2849ed3d4f72d911038d396de8d1757cffe44be20c37f9f16f0dc79"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers408.png",
+      "source_sha256": "fd476255f240daf264d2ee4c1d32d85692b4e2f27bc8d9af64797b2ee8c3651a",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers408.png",
+      "calibration_sha256": "41d059843196d02da343d71df34052a20f2a06814cad2ee00a60ec84382813de"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers857.png",
+      "source_sha256": "9c860c40af477171ef463b4998ee31c482ce18c40729c896e3c8bfbee6c65392",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers857.png",
+      "calibration_sha256": "900e1bd44339d5ecca257b4a004823471722ce4619442b5efe36095e5fbc59fd"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1249.png",
+      "source_sha256": "69f2017d3afc36bd96a5bc69c913df96420fed999a637f54621204b4c168bd78",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1249.png",
+      "calibration_sha256": "8117ed60d1683059bbd5ad796be4b8d572c306fafe199157553929ed1f751710"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers3978.png",
+      "source_sha256": "58a05b3035aa605b7519ca11c6f2f915d34263fbed4c6d9090877ae164200a4f",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers3978.png",
+      "calibration_sha256": "764dcfe1ecd7ca03eb69faf93eef1544a75735d21a26a47f85461783acff69d8"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers423.png",
+      "source_sha256": "58727ee3dc5e0b8520fdda6d33156f5d00c09e5e39af91f6adfaba39935bc491",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers423.png",
+      "calibration_sha256": "620ec535ac29fa79064400562dccd3bed7ffee89e0817179087fe669493c89d2"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers2719.png",
+      "source_sha256": "70406e6a845ccf999360280e4ad3f8a495b1400b962184ccd6f4a20c5fdbd59e",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers2719.png",
+      "calibration_sha256": "0fc1a2f588f69425e14b1f55460ff24eb7d2fe6169099befac0863c5ad104a9f"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1982.png",
+      "source_sha256": "3d3f98da6738020e841c7033a6714b0f0b8d48a0c31f2f4c5f636b100f389d01",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1982.png",
+      "calibration_sha256": "36657336e8ed3e74219050a52c76f0914ffe37b12bd3ad3e79e12e8c7d149c75"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers3330.png",
+      "source_sha256": "9fe86e2a6d9202640bc4a74a8322639ef39b49e5764c3c45003d54370c38cbe3",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers3330.png",
+      "calibration_sha256": "780624031c3e97c9992fb66382bf101b83149f748cf96dcbc293b54b0ff62f5e"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1174.png",
+      "source_sha256": "849cbfb6b4601b906c69776c76276406c7184f6575a7074e90f681823b1da1c9",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1174.png",
+      "calibration_sha256": "a0e078f418a052c0721abcd6f20aaccb9a54d4291eb8dbcfc75e1c33d9a41fe5"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4409.png",
+      "source_sha256": "430718b33ecdd4991ba73b21a258a3abc3d1db98be769fdc3d420b54f4fb676f",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4409.png",
+      "calibration_sha256": "4d0d22b480310ec9b020fc229b50eb55acbab42960f8ed6f6e7c79c68196b795"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers609.png",
+      "source_sha256": "e3f2b68e48791e4e10efde4cebac89cb63a6574ff72bd175f0a06443e34919d7",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers609.png",
+      "calibration_sha256": "c0085dff6574aca5b122410d8471b7fb4f1a3e4a5861bd37e93d9bf9b95dde17"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers2080.png",
+      "source_sha256": "a3103c43035575a72a6ffb5f30f8acfeaa3e7b053990db6395ea0fbbff6878cb",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers2080.png",
+      "calibration_sha256": "3dc4f7b04954473ea1259168a265fcfcd938515d52a2d35020eb99a078e180b3"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1653.png",
+      "source_sha256": "c9c1ccab0bec461830d96477c74b9501c6bce9431018b4fc42e6bc3f8afc6772",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1653.png",
+      "calibration_sha256": "f8f0d07bcdb7bf4a27101c8a03c195dd7ed4ab1699098ef663713f4ced13e3b7"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers1448.png",
+      "source_sha256": "14e753a788b4ea3c4594734985224a2e7da1e4fcf379f34f3d23a9042d794186",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers1448.png",
+      "calibration_sha256": "f37975c1196789be751cb5c59948b38b4c32ac51e2c4eec724aa9d1f0f0ee0d1"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4798.png",
+      "source_sha256": "7357f79b1340763b7832980ecb98667988a693c9a69d3487919c59faf4427917",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4798.png",
+      "calibration_sha256": "b030ecb46eed0be0e89c7c6a0d0cc0891503bd915678abb92792962ab908061a"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers42.png",
+      "source_sha256": "923de1273061fe58269be9ef3509d8c8f4dfbb82e36abaef95dd7ff893a1bbb3",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers42.png",
+      "calibration_sha256": "5eaca9bfb430223610a4e593eecfdac23f4899be9077cd9f4b5ecff9a5221063"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers4493.png",
+      "source_sha256": "1e35338711157ae12644f82b5aab4f2fe8acc2f4de6bed408f729edcfb6443dd",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers4493.png",
+      "calibration_sha256": "9acfda98f9f7161472bf05b0635b97c596e53691f559ff02a4ff5e1d84e24ac4"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers2988.png",
+      "source_sha256": "0784b7e40e1a3026107b8226b919880154c2bd6fe1fc3aceee8e2e6211a46626",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers2988.png",
+      "calibration_sha256": "d9f19fae2b07298db1cd333dbd4a6e27a55abe03036608b25dee6fc82e9f8e24"
+    },
+    {
+      "source": "dataset/processed/helmet_yolo_v1/images/train/hard_hat_workers3914.png",
+      "source_sha256": "bb39e633e8ae9e8d01b74635cf67affa1f4cfd2877e7909f93bf69b66e2d6df2",
+      "group": "both_classes",
+      "calibration_image": "dataset/processed/rknn_calibration_v1/hard_hat_workers3914.png",
+      "calibration_sha256": "01e9749ff510d781fb03291df9a99457d6a98c9c9dd1c0228cf3e93c5691f584"
+    }
+  ]
+}
