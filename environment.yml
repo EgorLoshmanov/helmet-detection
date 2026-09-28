@@ -7,5 +7,10 @@ dependencies:
   - pip:
       - ultralytics==8.4.155
       - kagglehub==1.0.2
+      - numpy==1.26.4
+      - ml-dtypes==0.5.4
+      - onnx==1.18.0
+      - onnxruntime==1.23.2
+      - onnxslim==0.1.96
       - pillow==11.3.0
       - pyyaml==6.0.3
