@@ -1,0 +1,335 @@
+{
+  "created_at_utc": "2026-09-28T13:44:55.868924+00:00",
+  "purpose": "Numerical and detection parity; not an independent quality evaluation of v2",
+  "dataset_note": "Default v1 test images may overlap v2 training images",
+  "model": {
+    "pt": "models/helmet_detector_v0.2.0.pt",
+    "pt_sha256": "abc0764a859476d33757a8d2389e685d2db48bdd14bbdfbbff2f655d0c952a1b",
+    "onnx": "models/helmet_detector.onnx",
+    "onnx_sha256": "ed17d0c71fa5f351c4e9b10e6318e84e0902c08763b82e64d659a4f5b92b04ba"
+  },
+  "versions": {
+    "torch": "2.14.0",
+    "onnxruntime": "1.23.2"
+  },
+  "settings": {
+    "imgsz": 640,
+    "conf": 0.25,
+    "iou": 0.7,
+    "raw_atol": 0.001,
+    "raw_rtol": 0.0001,
+    "max_box_delta_px": 2.0,
+    "max_confidence_delta": 0.01,
+    "min_match_iou": 0.98,
+    "device": "cpu",
+    "seed": 20260919
+  },
+  "summary": {
+    "images": 13,
+    "images_passed": 13,
+    "pt_detections": 175,
+    "onnx_detections": 175,
+    "passed": true
+  },
+  "images": [
+    {
+      "image": "dataset/processed/helmet_yolo_v1/images/test/hard_hat_workers4488.png",
+      "annotation_group": "helmet_only",
+      "annotation_boxes": 2,
+      "raw_shape": [
+        1,
+        6,
+        8400
+      ],
+      "raw_allclose": true,
+      "raw_max_abs_delta": 0.00130462646484375,
+      "raw_mean_abs_delta": 1.916525434353389e-05,
+      "detections": {
+        "pt_count": 2,
+        "onnx_count": 2,
+        "matched_count": 2,
+        "min_matched_iou": 0.9999983595443963,
+        "max_box_delta_px": 3.0517578125e-05,
+        "max_confidence_delta": 5.960464477539063e-08,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "image": "dataset/processed/helmet_yolo_v1/images/test/hard_hat_workers1429.png",
+      "annotation_group": "helmet_only",
+      "annotation_boxes": 2,
+      "raw_shape": [
+        1,
+        6,
+        8400
+      ],
+      "raw_allclose": true,
+      "raw_max_abs_delta": 0.001373291015625,
+      "raw_mean_abs_delta": 1.7140864656539634e-05,
+      "detections": {
+        "pt_count": 2,
+        "onnx_count": 2,
+        "matched_count": 2,
+        "min_matched_iou": 1.0,
+        "max_box_delta_px": 0.0,
+        "max_confidence_delta": 2.384185791015625e-07,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "image": "dataset/processed/helmet_yolo_v1/images/test/hard_hat_workers2901.png",
+      "annotation_group": "helmet_only",
+      "annotation_boxes": 3,
+      "raw_shape": [
+        1,
+        6,
+        8400
+      ],
+      "raw_allclose": true,
+      "raw_max_abs_delta": 0.001861572265625,
+      "raw_mean_abs_delta": 1.865489139163401e-05,
+      "detections": {
+        "pt_count": 2,
+        "onnx_count": 2,
+        "matched_count": 2,
+        "min_matched_iou": 1.0,
+        "max_box_delta_px": 0.0,
+        "max_confidence_delta": 5.960464477539062e-07,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "image": "dataset/processed/helmet_yolo_v1/images/test/hard_hat_workers1701.png",
+      "annotation_group": "helmet_only",
+      "annotation_boxes": 5,
+      "raw_shape": [
+        1,
+        6,
+        8400
+      ],
+      "raw_allclose": true,
+      "raw_max_abs_delta": 0.0008392333984375,
+      "raw_mean_abs_delta": 1.3490516721503809e-05,
+      "detections": {
+        "pt_count": 5,
+        "onnx_count": 5,
+        "matched_count": 5,
+        "min_matched_iou": 1.0,
+        "max_box_delta_px": 0.0,
+        "max_confidence_delta": 6.556510925292969e-07,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "image": "dataset/processed/helmet_yolo_v1/images/test/hard_hat_workers841.png",
+      "annotation_group": "no_helmet_only",
+      "annotation_boxes": 9,
+      "raw_shape": [
+        1,
+        6,
+        8400
+      ],
+      "raw_allclose": true,
+      "raw_max_abs_delta": 0.000732421875,
+      "raw_mean_abs_delta": 1.665043419052381e-05,
+      "detections": {
+        "pt_count": 9,
+        "onnx_count": 9,
+        "matched_count": 9,
+        "min_matched_iou": 0.999996481908213,
+        "max_box_delta_px": 3.0517578125e-05,
+        "max_confidence_delta": 8.940696716308594e-07,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "image": "dataset/processed/helmet_yolo_v1/images/test/hard_hat_workers3837.png",
+      "annotation_group": "no_helmet_only",
+      "annotation_boxes": 5,
+      "raw_shape": [
+        1,
+        6,
+        8400
+      ],
+      "raw_allclose": true,
+      "raw_max_abs_delta": 0.0008697509765625,
+      "raw_mean_abs_delta": 1.5584133507218212e-05,
+      "detections": {
+        "pt_count": 5,
+        "onnx_count": 5,
+        "matched_count": 5,
+        "min_matched_iou": 0.9999970539996577,
+        "max_box_delta_px": 3.0517578125e-05,
+        "max_confidence_delta": 7.152557373046875e-07,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "image": "dataset/processed/helmet_yolo_v1/images/test/hard_hat_workers3968.png",
+      "annotation_group": "no_helmet_only",
+      "annotation_boxes": 7,
+      "raw_shape": [
+        1,
+        6,
+        8400
+      ],
+      "raw_allclose": true,
+      "raw_max_abs_delta": 0.00079345703125,
+      "raw_mean_abs_delta": 1.4433807336899918e-05,
+      "detections": {
+        "pt_count": 8,
+        "onnx_count": 8,
+        "matched_count": 8,
+        "min_matched_iou": 0.9999976338053498,
+        "max_box_delta_px": 3.0517578125e-05,
+        "max_confidence_delta": 7.748603820800781e-07,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "image": "dataset/processed/helmet_yolo_v1/images/test/hard_hat_workers536.png",
+      "annotation_group": "no_helmet_only",
+      "annotation_boxes": 6,
+      "raw_shape": [
+        1,
+        6,
+        8400
+      ],
+      "raw_allclose": true,
+      "raw_max_abs_delta": 0.000640869140625,
+      "raw_mean_abs_delta": 1.4204559192876332e-05,
+      "detections": {
+        "pt_count": 6,
+        "onnx_count": 6,
+        "matched_count": 6,
+        "min_matched_iou": 0.9999991884288851,
+        "max_box_delta_px": 1.52587890625e-05,
+        "max_confidence_delta": 1.7881393432617188e-07,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "image": "dataset/processed/helmet_yolo_v1/images/test/hard_hat_workers2487.png",
+      "annotation_group": "both_classes",
+      "annotation_boxes": 22,
+      "raw_shape": [
+        1,
+        6,
+        8400
+      ],
+      "raw_allclose": true,
+      "raw_max_abs_delta": 0.001434326171875,
+      "raw_mean_abs_delta": 1.4990403542469721e-05,
+      "detections": {
+        "pt_count": 23,
+        "onnx_count": 23,
+        "matched_count": 23,
+        "min_matched_iou": 0.9999939631418079,
+        "max_box_delta_px": 4.57763671875e-05,
+        "max_confidence_delta": 1.430511474609375e-06,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "image": "dataset/processed/helmet_yolo_v1/images/test/hard_hat_workers1342.png",
+      "annotation_group": "both_classes",
+      "annotation_boxes": 10,
+      "raw_shape": [
+        1,
+        6,
+        8400
+      ],
+      "raw_allclose": true,
+      "raw_max_abs_delta": 0.0006561279296875,
+      "raw_mean_abs_delta": 1.3441591363516636e-05,
+      "detections": {
+        "pt_count": 13,
+        "onnx_count": 13,
+        "matched_count": 13,
+        "min_matched_iou": 0.9999867505796621,
+        "max_box_delta_px": 6.103515625e-05,
+        "max_confidence_delta": 8.344650268554688e-07,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "image": "dataset/processed/helmet_yolo_v1/images/test/hard_hat_workers1383.png",
+      "annotation_group": "both_classes",
+      "annotation_boxes": 4,
+      "raw_shape": [
+        1,
+        6,
+        8400
+      ],
+      "raw_allclose": true,
+      "raw_max_abs_delta": 0.00054931640625,
+      "raw_mean_abs_delta": 1.4206730156729463e-05,
+      "detections": {
+        "pt_count": 4,
+        "onnx_count": 4,
+        "matched_count": 4,
+        "min_matched_iou": 0.9999986422977211,
+        "max_box_delta_px": 3.0517578125e-05,
+        "max_confidence_delta": 3.5762786865234375e-07,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "image": "dataset/processed/helmet_yolo_v1/images/test/hard_hat_workers3546.png",
+      "annotation_group": "both_classes",
+      "annotation_boxes": 6,
+      "raw_shape": [
+        1,
+        6,
+        8400
+      ],
+      "raw_allclose": true,
+      "raw_max_abs_delta": 0.000823974609375,
+      "raw_mean_abs_delta": 1.5087164683791343e-05,
+      "detections": {
+        "pt_count": 7,
+        "onnx_count": 7,
+        "matched_count": 7,
+        "min_matched_iou": 0.9999993058241033,
+        "max_box_delta_px": 1.52587890625e-05,
+        "max_confidence_delta": 3.874301910400391e-06,
+        "passed": true
+      },
+      "passed": true
+    },
+    {
+      "image": "dataset/processed/helmet_yolo_v1/images/test/hard_hat_workers4767.png",
+      "annotation_group": "helmet_only",
+      "annotation_boxes": 68,
+      "raw_shape": [
+        1,
+        6,
+        8400
+      ],
+      "raw_allclose": true,
+      "raw_max_abs_delta": 0.0008392333984375,
+      "raw_mean_abs_delta": 1.1296715456410311e-05,
+      "detections": {
+        "pt_count": 89,
+        "onnx_count": 89,
+        "matched_count": 89,
+        "min_matched_iou": 0.9999925831192071,
+        "max_box_delta_px": 6.103515625e-05,
+        "max_confidence_delta": 1.3709068298339844e-06,
+        "passed": true
+      },
+      "passed": true
+    }
+  ]
+}

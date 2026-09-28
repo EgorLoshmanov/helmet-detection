@@ -179,12 +179,20 @@ v1 не было, поэтому выборка объективно трудн�
 python scripts/download_model.py --version v0.2.0 \
   --output models/helmet_detector_v0.2.0.pt
 python export/export_onnx.py
+python export/validate_onnx.py
 ```
 
 Результат — `models/helmet_detector.onnx` со статическим входом
 `1×3×640×640`, opset 12 и выходом `1×6×8400`. Зависимости экспорта и проверки
 зафиксированы в `environment.yml`; сам ONNX-файл исключён из Git и передаётся
 как отдельный артефакт.
+
+Проверка сравнивает сырые выходы и детекции PyTorch/ONNX на 13 изображениях из
+локальной тестовой части v1 (каска, голова без каски, оба класса и многолюдный
+кадр). Результат записывается в `reports/onnx_comparison.json`. Для своих кадров
+используйте `python export/validate_onnx.py --images path/to/first.jpg path/to/second.jpg`.
+Этот тест показывает совпадение двух форматов модели; кадры v1 могут встречаться
+в обучении v2 и не подходят для независимой оценки качества детектора.
 
 ## Firefly
 
