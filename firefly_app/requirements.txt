@@ -1,0 +1,5 @@
+# Runtime only; install in a dedicated Python 3.10 environment on Firefly.
+numpy==1.26.4
+opencv-python-headless==4.10.0.84
+pyserial==3.5
+# RKNNLite 2.3.2 is platform-specific and already present in board env 24942.

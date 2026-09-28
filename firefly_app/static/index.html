@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Helmet Monitor</title>
+  <style>
+    :root{color-scheme:dark;font-family:system-ui,sans-serif;background:#10151d;color:#e8eef7}
+    *{box-sizing:border-box}body{margin:0}main{max-width:1400px;margin:auto;padding:28px}
+    header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px}
+    h1{font-size:25px;margin:0}h2{font-size:18px;margin:0 0 16px}.sub{color:#9baac0;font-size:14px;margin:7px 0}
+    .badge{padding:9px 16px;border-radius:8px;background:#28354a;font-weight:700;white-space:nowrap}
+    .SAFE{background:#174333;color:#8defb9}.PENDING{background:#55471e;color:#ffe28a}.ALARM,.FAULT{background:#562b34;color:#ffb3bd}
+    .layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:20px}.card{background:#192230;border:1px solid #2b384b;border-radius:12px;padding:20px}
+    .video{position:relative;line-height:0;background:#0c1118;border-radius:8px;overflow:hidden;min-height:200px}
+    .video img{width:100%;display:block}.video canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair}
+    .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 0}.metric{background:#101925;padding:13px;border-radius:8px}
+    .metric span{display:block;font-size:12px;color:#9baac0}.metric strong{display:block;font-size:22px;margin-top:5px}
+    label{display:block;color:#bbc8d9;font-size:13px;margin:14px 0 6px}input{width:100%;padding:10px;background:#101925;border:1px solid #3a4c63;color:#e8eef7;border-radius:6px}
+    button,.link{border:0;border-radius:6px;padding:11px 15px;background:#72d4bd;color:#10241f;cursor:pointer;font-weight:600;text-decoration:none;display:inline-block}
+    button.secondary{background:#2c3b50;color:#e8eef7}button:disabled{opacity:.5;cursor:wait}.buttons{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+    #message,#reason{line-height:1.5;font-size:14px;overflow-wrap:anywhere}#message{color:#ffe28a;min-height:20px;margin-top:12px}.history{margin-top:20px;overflow:auto}
+    table{width:100%;border-collapse:collapse;font-size:14px;white-space:nowrap}td,th{text-align:left;padding:12px 8px;border-bottom:1px solid #2b384b}th{color:#9baac0;font-weight:500}a{color:#8be3cd}
+    .draft{color:#ffe28a}.empty{color:#9baac0;padding:20px}.notice{color:#ffe28a;font-size:14px}
+    @media(max-width:900px){.layout{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}main{padding:16px}header{align-items:flex-start}}
+  </style>
+</head>
+<body><main>
+  <header><div><h1>Helmet Monitor</h1><p class="sub">Контроль касок в рабочей зоне · Firefly RK3588S</p><div id="mode" class="notice"></div></div><span id="state" class="badge FAULT">Подключение…</span></header>
+  <div class="layout">
+    <section class="card"><div class="video" id="video"><img id="frame" alt="Видеопоток с камеры"><canvas id="roiCanvas"></canvas></div>
+      <p id="reason" class="sub">Ожидание состояния устройства</p>
+      <div class="metrics">
+        <div class="metric"><span>Обработано кадров / с</span><strong id="fps">—</strong></div>
+        <div class="metric"><span>Вызов NPU, мс</span><strong id="inference">—</strong></div>
+        <div class="metric"><span>Кадр → результат, мс</span><strong id="latency">—</strong></div>
+        <div class="metric"><span>Нарушений в зоне</span><strong id="count">—</strong></div>
+      </div><p class="sub" id="p95"></p>
+    </section>
+    <aside class="card"><h2>Настройки контроля</h2><p class="sub">Протяните прямоугольник на видео, чтобы выбрать зону. Учитывается центр бокса головы или каски.</p>
+      <form id="settings">
+        <label for="confidence">Порог уверенности</label><input id="confidence" type="number" min="0.01" max="1" step="0.01" required>
+        <label for="alarm_on_seconds">Подтверждение нарушения, с</label><input id="alarm_on_seconds" type="number" min="0.1" max="60" step="0.1" required>
+        <label for="alarm_off_seconds">Подтверждение снятия тревоги, с</label><input id="alarm_off_seconds" type="number" min="0.1" max="60" step="0.1" required>
+        <p class="sub" id="roiText"></p><div class="buttons"><button id="save" type="submit">Сохранить</button><button id="full" class="secondary" type="button">Весь кадр</button></div>
+      </form><div role="status" id="message"></div><p class="sub">Изменения применяются после сохранения. Подтверждение тревоги начинается заново.</p>
+      <a class="link" href="/api/metrics.csv" download="metrics.csv">Скачать метрики CSV</a>
+    </aside>
+  </div>
+  <section class="card history"><h2>Журнал событий</h2><p class="sub">Последние 100 событий. Нарушения и сбои записываются отдельно.</p>
+    <table><thead><tr><th>Начало</th><th>Событие</th><th>Длительность</th><th>Описание</th><th>Снимок</th></tr></thead><tbody id="events"></tbody></table>
+  </section>
+</main>
+<script>
+  const $=id=>document.getElementById(id);
+  let config=null,draft=[0,0,1,1],drag=null,editing=false,connected=false;
+  const fields=['confidence','alarm_on_seconds','alarm_off_seconds'];
+  async function request(url,options){const r=await fetch(url,options);const data=await r.json();if(!r.ok)throw Error(data.error||`HTTP ${r.status}`);return data;}
+  function drawROI(){const c=$('roiCanvas');c.width=c.clientWidth;c.height=c.clientHeight;const ctx=c.getContext('2d');ctx.strokeStyle='#ffe28a';ctx.lineWidth=2;ctx.setLineDash([8,5]);ctx.strokeRect(draft[0]*c.width,draft[1]*c.height,(draft[2]-draft[0])*c.width,(draft[3]-draft[1])*c.height);$('roiText').textContent='Зона: '+draft.map(n=>Math.round(n*100)+'%').join(' / ');$('roiText').className=editing?'sub draft':'sub';}
+  function position(e){const r=$('roiCanvas').getBoundingClientRect();return [Math.min(1,Math.max(0,(e.clientX-r.left)/r.width)),Math.min(1,Math.max(0,(e.clientY-r.top)/r.height))];}
+  $('roiCanvas').addEventListener('pointerdown',e=>{if(!config)return;drag=position(e);$('roiCanvas').setPointerCapture(e.pointerId);});
+  $('roiCanvas').addEventListener('pointermove',e=>{if(!drag)return;const p=position(e);draft=[Math.min(drag[0],p[0]),Math.min(drag[1],p[1]),Math.max(drag[0],p[0]),Math.max(drag[1],p[1])];editing=true;drawROI();});
+  $('roiCanvas').addEventListener('pointerup',()=>{drag=null;if(draft[2]-draft[0]<0.01||draft[3]-draft[1]<0.01){draft=[...config.roi];editing=false;}drawROI();});
+  $('roiCanvas').addEventListener('pointercancel',()=>{drag=null;draft=[...config.roi];editing=false;drawROI();});
+  $('full').onclick=()=>{draft=[0,0,1,1];editing=true;drawROI();};
+  window.addEventListener('resize',drawROI);$('frame').onload=drawROI;
+  $('settings').onsubmit=async e=>{e.preventDefault();if(!config)return;$('save').disabled=true;try{const next={...config,roi:draft};for(const key of fields)next[key]=Number($(key).value);config=await request('/api/settings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(next)});editing=false;drawROI();$('message').textContent='Настройки сохранены';}catch(error){$('message').textContent=error.message;}finally{$('save').disabled=false;}};
+  function state(name,reason){$('state').textContent=name;$('state').className='badge '+name;$('reason').textContent=reason;}
+  function number(value){return value==null?'—':Number(value).toFixed(1);}
+  async function updateStatus(){try{const s=await request('/api/status');connected=true;state(s.state,s.reason||({SAFE:'Подтверждённых нарушений нет',PENDING:'Нарушение ожидает подтверждения',ALARM:'Подтверждено отсутствие каски в зоне'}[s.state]||''));$('mode').textContent=s.mode==='demo'?'ДЕМО · синтетические кадры, NPU и периферия не используются':'RKNN FP16 · NPU, ядро 0';$('fps').textContent=number(s.fps);$('inference').textContent=s.mode==='demo'?'—':number(s.inference_ms);$('latency').textContent=number(s.frame_to_result_ms);$('count').textContent=s.violations??'—';$('p95').textContent=s.latency_p95_ms==null?'':`95-й процентиль задержки: ${number(s.latency_p95_ms)} мс · последние 1000 результатов`;}catch(error){connected=false;state('FAULT','Нет связи с приложением: '+error.message);for(const id of ['fps','inference','latency','count'])$(id).textContent='—';}setTimeout(updateStatus,500);}
+  async function updateFrame(){try{const r=await fetch('/frame.jpg?t='+Date.now());if(!r.ok)throw Error();const blob=await r.blob();const url=URL.createObjectURL(blob);const old=$('frame').dataset.url;$('frame').src=url;$('frame').dataset.url=url;if(old)URL.revokeObjectURL(old);$('frame').style.opacity=connected?'1':'.35';}catch{$('frame').style.opacity='.2';}setTimeout(updateFrame,200);}
+  function cell(row,text){const td=document.createElement('td');td.textContent=text;row.appendChild(td);return td;}
+  async function updateEvents(){try{const events=await request('/api/events');$('events').replaceChildren();for(const event of events){const row=document.createElement('tr');cell(row,new Date(event.started_at).toLocaleString());cell(row,event.kind==='ALARM'?'Нарушение':'Сбой');cell(row,event.ended_at?(event.duration_seconds==null?'Неизвестна':number(event.duration_seconds)+' с'):'Продолжается');cell(row,event.reason);const td=cell(row,'—');if(event.snapshot){td.textContent='';const link=document.createElement('a');link.href='/snapshots/'+event.id+'.jpg';link.target='_blank';link.rel='noopener';link.textContent='Открыть';td.appendChild(link);}$('events').appendChild(row);}if(!events.length){const row=document.createElement('tr');const td=cell(row,'Событий пока нет');td.colSpan=5;td.className='empty';$('events').appendChild(row);}}catch{}setTimeout(updateEvents,2000);}
+  (async()=>{try{config=await request('/api/settings');draft=[...config.roi];for(const key of fields)$(key).value=config[key];drawROI();}catch(error){$('message').textContent=error.message;}})();
+  updateStatus();updateFrame();updateEvents();
+</script></body></html>
