@@ -9,9 +9,10 @@ import unittest
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
+import cv2
 import numpy as np
 
-from firefly_app.camera import Frame
+from firefly_app.camera import Camera, Frame
 from firefly_app.config import Config, load_config, save_config
 from firefly_app.inference import FP16_SHA256, RKNNDetector
 from firefly_app.journal import Journal
@@ -160,6 +161,66 @@ class WebTests(unittest.TestCase):
                 server.shutdown()
                 server.server_close()
                 monitor.journal.close()
+
+
+class RecordingSourceTests(unittest.TestCase):
+    """A recording must play at its own rate and rewind without faulting.
+
+    Read unpaced, a clip is consumed far faster than real time and every pass ends
+    in a read failure, so the confirmation timers never see a violation held for
+    the configured interval.
+    """
+
+    def test_recording_is_paced_and_rewinds_without_error(self):
+        with tempfile.TemporaryDirectory() as directory:
+            clip = Path(directory) / "clip.mp4"
+            writer = cv2.VideoWriter(str(clip), cv2.VideoWriter_fourcc(*"mp4v"), 12, (64, 64))
+            self.assertTrue(writer.isOpened())
+            for index in range(6):
+                writer.write(np.full((64, 64, 3), index * 30, np.uint8))
+            writer.release()
+
+            stop = threading.Event()
+            camera = Camera(str(clip), stop)
+            camera.start()
+            try:
+                errors, published = 0, 0
+                started = time.monotonic()
+                while time.monotonic() - started < 1.2:
+                    frame, error = camera.snapshot()
+                    if error and published:
+                        errors += 1
+                    if frame is not None:
+                        published = max(published, frame.sequence)
+                    time.sleep(0.005)
+            finally:
+                stop.set()
+                camera.thread.join(2)
+            # 0.5 s of clip in 1.2 s of wall time: it must loop, but stay near 12 fps.
+            self.assertGreater(published, 6,
+                f"only {published} frames were observable; the recording must play and rewind")
+            self.assertLess(published, 30,
+                f"{published} frames in 1.2 s: the recording was read faster than its frame rate")
+            self.assertEqual(errors, 0, "rewinding must not surface as a camera error")
+
+    def test_unreadable_recording_still_reports_failure(self):
+        with tempfile.TemporaryDirectory() as directory:
+            broken = Path(directory) / "broken.mp4"
+            broken.write_bytes(b"not a video")
+            stop = threading.Event()
+            camera = Camera(str(broken), stop)
+            camera.start()
+            try:
+                deadline = time.monotonic() + 2
+                while time.monotonic() < deadline:
+                    if camera.snapshot()[1]:
+                        break
+                    time.sleep(0.01)
+                self.assertTrue(camera.snapshot()[1], "a broken recording must report an error")
+                self.assertIsNone(camera.snapshot()[0])
+            finally:
+                stop.set()
+                camera.thread.join(2)
 
 
 class SupervisorTests(unittest.TestCase):
