@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from pathlib import Path
 import threading
 import time
 
@@ -23,6 +24,10 @@ class Camera:
         self.source = int(source) if source.isdigit() else source
         self.stop = stop
         self.demo = demo
+        # A regular file is a recording: pace it at its own frame rate and rewind
+        # at the end. Character devices such as /dev/video0 and network streams
+        # are live sources and keep the original behaviour.
+        self.recording = isinstance(self.source, str) and Path(self.source).is_file()
         self.lock = threading.Lock()
         self.latest: Frame | None = None
         self.error = "Waiting for camera"
@@ -86,12 +91,28 @@ class Camera:
                 if not capture.isOpened():
                     raise RuntimeError("Cannot open camera/source")
                 capture.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+                interval = 0.0
+                if self.recording:
+                    declared = capture.get(cv2.CAP_PROP_FPS)
+                    interval = 1.0 / declared if 0 < declared <= 240 else 1.0 / 15
+                published = 0
                 while not self.stop.is_set():
+                    deadline = time.monotonic() + interval
                     ok, image = capture.read()
                     if not ok or image is None or image.size == 0:
+                        # Rewind only after at least one frame of this pass, so an
+                        # unreadable recording still reports a failure.
+                        if self.recording and published:
+                            capture.set(cv2.CAP_PROP_POS_FRAMES, 0)
+                            published = 0
+                            continue
                         raise RuntimeError("Camera frame read failed (or video ended)")
                     sequence += 1
+                    published += 1
                     self._publish(sequence, image)
+                    remaining = deadline - time.monotonic()
+                    if remaining > 0:
+                        self.stop.wait(remaining)
             except Exception as exc:
                 self._fail(str(exc))
             finally:
